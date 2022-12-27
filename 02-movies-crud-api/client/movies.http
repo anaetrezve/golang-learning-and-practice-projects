@@ -1,0 +1,48 @@
+@hostname = http://localhost
+@port = 8000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+# get all Movies
+GET {{host}}/movies HTTP/1.1
+
+###
+
+# get a movie by id
+GET {{host}}/movies/1 HTTP/1.1
+
+###
+
+# create a movie
+POST {{host}}/movies HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+	"isbn": "888888",
+	"title": "Movie Three",
+	"director": {
+		"firstName": "Simon",
+		"lastName": "Kostin"
+	}
+}
+
+
+###
+
+# update a movie
+PUT {{host}}/movies HTTP/1.1
+content-type: {{contentType}}
+
+{
+	"isbn": "111111",
+	"title": "Movie 3",
+	# "director": {
+	# 	"firstName": "Simon",
+	# 	"lastName": "Kostin"
+	# }
+}
+
+###
+
+# delete a movie
+DELETE {{host}}/movies/8498081 HTTP/1.1
